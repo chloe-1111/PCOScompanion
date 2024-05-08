@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 	
 	<!--title-->
-	<title> PCOS </title>
+	<title> PCOS companion</title>
 
 	<!--style sheets-->
 	<link rel="shortcut icon" href="images/logo.png" />
@@ -33,24 +33,24 @@ include("templates/conn.php");
 	<div id="header-img" style="background-image: url(images/headerlg.png);"></div>
 	
 	<!--nav bar-->
-	<nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-md-block">
+	<nav class="navbar navbar-expand-lg navbar-light bg-white">
 		<div class="container d-flex justify-content-center">
 
 			<a href="daily.php" class="navbar-brand d-flex align-items-center">
-				<img src="images/list.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="list icon">
-				<span class="navbar-text d-none d-lg-block" style="color: #005453;"> Daily Log </span>
+				<img src="images/list.png" width="40" height="40" class="mr-3" alt="list icon">
+				<span class="navbar-text d-lg-block" style="color: #005453;"> Daily Log </span>
 			</a>
 			<a href="food.php" class="navbar-brand d-flex align-items-center ml-5">
-				<img src="images/food.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="property icon">
-				<span class="navbar-text d-none d-lg-block" style="color: #005453;"> Food</span>
+				<img src="images/food.png" width="40" height="40" class="mr-3" alt="property icon">
+				<span class="navbar-text d-lg-block" style="color: #005453;"> Food</span>
 			</a>
 			<a href="progress.php" class="navbar-brand d-flex align-items-center ml-5">
-				<img src="images/progress.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="medicine icon">
-				<span class="navbar-text d-none d-lg-block" style="color: #005453;"> Progress </span>
+				<img src="images/progress.png" width="40" height="40" class="mr-3" alt="medicine icon">
+				<span class="navbar-text d-lg-block" style="color: #005453;"> Progress </span>
 			</a>
 			<a href="calendar.php" class="navbar-brand d-flex align-items-center ml-5">
-				<img src="images/calendar.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="calendar icon">
-				<span class="navbar-text d-none d-lg-block" style="color: #005453;"> Calender </span>
+				<img src="images/calendar.png" width="40" height="40" class="mr-3" alt="calendar icon">
+				<span class="navbar-text d-lg-block" style="color: #005453;"> Calender </span>
 			</a>
 	
 		</div>

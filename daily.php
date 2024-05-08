@@ -4,7 +4,7 @@ include("header.php");
 ?>
 
 <!-- form -->
-<div class="container">
+<div class="container" style="margin-left: 100px;">
 
 <!-- eat today -->
 <h1>What did you eat today?</h1>
@@ -56,7 +56,7 @@ include("header.php");
   
 
 <!-- Submit button -->
-<div class="button-right">
+<div class="button-right" style="margin-top: 20px;">
     <button type="submit" class="btn btn-outline-secondary">
       <a href="progress.php">Next</a>
     </button>
