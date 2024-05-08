@@ -30,7 +30,7 @@ include("templates/conn.php");
 
 <header>
 	<!--header image-->
-	<div id="header-img" style="background-image: url(images/header4.png);"></div>
+	<div id="header-img" style="background-image: url(images/header3.png);"></div>
 	
 	<!--nav bar-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-md-block">
