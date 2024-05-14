@@ -20,7 +20,7 @@
 
 <!--header image-->
 <header>
-	<div id="header-img" style="background-image: url(images/header2.png);"></div>
+	<div id="header-img" style="background-image: url(images/headerlg.png);"></div>
 </header>
 
 
@@ -31,49 +31,49 @@ include("templates/conn.php");
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $patientid = $_POST['patientid'];
-    $password = $_POST['password'];
+  // Debugging: Output all form data
+  echo "Form Data: ";
+  var_dump($_POST);
 
-    // Check if patientid and password match in the registration table
-    $sql = "SELECT * FROM registration WHERE patientid=:patientid AND password=:password";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':patientid', $patientid);
-    $stmt->bindValue(':password', $password); // Assuming password is stored as plaintext (not recommended)
-    $stmt->execute();
-    $registration = $stmt->fetch();
+  $patientid = $_POST['patientid'];
+  $password = $_POST['password'];
 
-    if ($registration) {
-        // Patient ID and password match, redirect to home page with patientid in URL
-        header("Location: home.php?patientid=$patientid");
-        exit();
-    } else {
-        // Patient ID or password is incorrect
-        $errorMessage = "Incorrect patient ID or password. Please try again.";
-    }
+  // Check if patientid and password match in the registration table
+  $sql = "SELECT * FROM registration WHERE patientid=:patientid AND password=:password";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindValue(':patientid', $patientid);
+  $stmt->bindValue(':password', $password); // Assuming password is stored as plaintext (not recommended)
+  $stmt->execute();
+  $registration = $stmt->fetch();
+
+  if ($registration) {
+      // Patient ID and password match, redirect to home page with patient ID in URL
+      header("Location: home.php?patientid=$patientid");
+      exit();
+  } else {
+      // Patient ID or password is incorrect
+      $errorMessage = "Incorrect patient ID or password. Please try again.";
+  }
 }
 ?>
 
 
-    <!-- Login Form -->
-    <div class="container">
-        <h1>Login</h1>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <label for="patientid" class="form-label">Patient ID:</label>
-            <input type="text" class="form-control" id="patientid" name="patientid" required><br>
-            <label for="password" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="password" name="password" required><br>
-            <input type="submit" class="btn btn-outline-secondary float-right" name="login" value="Login">
-        </form>
-        <?php if (isset($errorMessage)) : ?>
-            <p class="text-danger"><?php echo $errorMessage; ?></p>
-        <?php endif; ?>
-    </div>
+<body>
+<!--search function -->
+<div class="container">
+<h1> Search </h1>
+<form method="POST" action="search.php">
+    <label for="patientid" class="form-label">Patient ID:</label>
+    <input type="text" class="form-control"id="patientid" name="patientid" required><br>
+    <label for="password" class="form-label">Password:</label>
+    <input type="password"class="form-control"  id="password" name="password" required><br>
+    <input type="submit" value="Submit" class="btn btn-outline-secondary float-right">
+</form>
+</form>
+</div>
+</body>
 
-
-
-
-
-
+	
 <!--Create account -->
 <div class="container">
   <h1> Create a new account </h1> 
@@ -93,6 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
       <div class="modal-body">
         <form method="POST">
+        <div class="form-group">
+              <label for="firstname">First Name:</label>
+              <input type="text" id="firstname" name="firstname" class="form-control" required>
+          </div>
+          <div class="form-group">
+              <label for="lastname">Last Name:</label>
+              <input type="text" id="lastname" name="lastname" class="form-control" required>
+          </div>
           <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" class="form-control" required>
@@ -174,6 +182,8 @@ if (isset($_POST['addpatient'])) {
         echo "<script>alert('Email is required!')</script>";
         exit; // Exit script if email is not provided
     }
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
     $password = $_POST['password'];
     $birthdate = $_POST['birthdate'];
     $birthcontrol = $_POST['birthcontrol'];
@@ -193,9 +203,11 @@ if (isset($_POST['addpatient'])) {
         $stmt_registration->execute();
 
         // Insert additional information into patient table
-        $add_patient_info = "INSERT INTO patient (patientid, birthdate, birthcontrol, weight, height, ethnicity, diet, allergies, symptoms) VALUES (:patientid, :birthdate, :birthcontrol, :weight, :height, :ethnicity, :diet, :allergies, :symptoms)";
+        $add_patient_info = "INSERT INTO patient (patientid, firstname, lastname, birthdate, birthcontrol, weight, height, ethnicity, diet, allergies, symptoms) VALUES (:patientid, :firstname, :lastname, :birthdate, :birthcontrol, :weight, :height, :ethnicity, :diet, :allergies, :symptoms)";
         $stmt_patient_info = $conn->prepare($add_patient_info);
         $stmt_patient_info->bindValue(':patientid', $patientid);
+        $stmt_patient_info->bindValue(':firstname', $firstname);
+        $stmt_patient_info->bindValue(':lastname', $lastname);
         $stmt_patient_info->bindValue(':birthdate', $birthdate);
         $stmt_patient_info->bindValue(':birthcontrol', $birthcontrol);
         $stmt_patient_info->bindValue(':weight', $weight);
@@ -218,3 +230,8 @@ if (isset($_POST['addpatient'])) {
 
 </body>
 </html>
+
+
+
+
+

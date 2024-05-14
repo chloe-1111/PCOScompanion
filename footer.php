@@ -1,17 +1,3 @@
-<!-- Home--> 
-    <!-- JS QR code generator -->
-    <script>
-        const qrcode = new QRCode(document.getElementById('qr-display'), {
-            text: window.location.href,
-            width: 256,
-            height: 256,
-            colorDark : '#000',
-            colorLight : '#fff',
-            correctLevel : QRCode.CorrectLevel.H
-        });
-    </script>  
-
-
 <!--container 1: patient information -->
     <!-- Template for birthdate input-->
     <script>
@@ -154,49 +140,24 @@
 
     <!-- Template for checkin date input-->
     <script>
-        document.getElementById("checkin").oninvalid = function (e) {
-        e.target.setCustomValidity("Checkin date must be in the format 'dd-mm-yyyy'");
+        document.getElementById("startcycle").oninvalid = function (e) {
+        e.target.setCustomValidity("Date must be in the format 'dd-mm-yyyy'");
     };
-    document.getElementById("checkin").oninput = function (e) {
+    document.getElementById("startcycle").oninput = function (e) {
         e.target.setCustomValidity("");
     };
     </script>  
 
     <!-- Template for checkout date input-->
     <script>
-        document.getElementById("checkout").oninvalid = function (e) {
-        e.target.setCustomValidity("Checkout date must be in the format 'dd-mm-yyyy'");
+        document.getElementById("endcycle").oninvalid = function (e) {
+        e.target.setCustomValidity("Date must be in the format 'dd-mm-yyyy'");
     };
-    document.getElementById("checkout").oninput = function (e) {
+    document.getElementById("endcycle").oninput = function (e) {
         e.target.setCustomValidity("");
     };
     </script>  
 
-
-<!-- Container 6: Behaviour -->
-    <!-- colour behaviour text box -->
-    <script>
-    // Get references to the radio buttons and the textbox
-    var radioButtons = document.querySelectorAll('input[name="urgency"]');
-    var textbox = document.querySelector('#notes');
-
-    // Add an event listener to each radio button 
-    radioButtons.forEach(function(radioButton) {
-        radioButton.addEventListener('change', function() {
-        // Get the selected value
-        var selectedValue = this.value;
-
-        // Set the border color of the textbox based on the selected value
-        if (selectedValue == 1) {
-            textbox.style.borderColor = 'rgba(76, 175, 80, 0.4)';
-        } else if (selectedValue == 2) {
-            textbox.style.borderColor = 'rgba(255, 206, 86, 0.4)';
-        } else if (selectedValue == 3) {
-            textbox.style.borderColor = 'rgba(183, 28, 28, 0.4)';
-        }
-        });
-    });
-    </script>
 
 </body>
 </html>

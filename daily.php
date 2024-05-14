@@ -1,10 +1,6 @@
-<!--include header-->
-<?php
-include("header.php");
-?>
 
 <!-- form -->
-<div class="container" style="margin-left: 100px;">
+<div class="container" id="daily-container">
 
 <!-- eat today -->
 <h1>What did you eat today?</h1>
@@ -56,7 +52,7 @@ include("header.php");
   
 
 <!-- Submit button -->
-<div class="button-right" style="margin-top: 20px;">
+<div class="button-right">
     <button type="submit" class="btn btn-outline-secondary">
       <a href="progress.php">Next</a>
     </button>
