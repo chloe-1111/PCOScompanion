@@ -1,22 +1,77 @@
 <?php
-// Ensure patient ID is present in the URL
 if(isset($_GET['patientid'])) {
-    // Retrieve patient ID from the URL
     $patientid = $_GET['patientid'];
 } else {
-    // Redirect or handle the case where patient ID is not present in the URL
-    // For example, redirect to the search page
+
     header("Location: search.php");
-    exit(); // Stop further execution
+    exit(); 
 }
 ?>
 
 <!--container: food-->
 <div class="container"  id="food-container">
   <h1 id="food"> Food Recommendations for You </h1>
-  <p> Insert AI model </p>
-  <button type="button" class="btn btn-outline-secondary float-right" data-toggle="modal" data-target="#editDailyModal"> Add Today's Symptoms </button> <br>	<br>
-  <button type="button" class="btn btn-outline-secondary float-right" data-toggle="modal" data-target="#editFoodModal">Add Today's Food Consumption</button><br>
+  <table class="table">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity (grams)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $pcos_foods = ['almonds', 'spinach', 'chickpeas', 'avocado', 'berries', 'salmon', 'broccoli', 'flaxseeds', 'pumpkin seeds', 'kale'];
+
+            function getRandomQuantity() {
+                return rand(50, 200) . 'g'; 
+            }
+
+            $food_recommendations = [];
+
+            $csvFile = 'C:\xampp\htdocs\PCOScompanion\PCOS_AI\data.csv';
+            $file = fopen($csvFile, 'r');
+
+            $headers = fgetcsv($file, 0, ';');
+
+            while (($row = fgetcsv($file, 0, ';')) !== FALSE) {
+                $foods = array_slice($row, 9);
+
+                foreach ($foods as $food) {
+                    if (!empty($food)) {
+                        $food_parts = explode('_', $food);
+                        $item = $food_parts[0];
+
+                        if (in_array($item, $pcos_foods) && !array_key_exists($item, $food_recommendations)) {
+                            $food_recommendations[$item] = [
+                                'item' => $item,
+                                'quantity' => getRandomQuantity()
+                            ];
+                        }
+                    }
+                }
+            }
+
+            fclose($file);
+
+            $food_recommendations = array_values($food_recommendations);
+            shuffle($food_recommendations);
+            
+            $recommendations = array_slice($food_recommendations, 0, 3);
+       
+            foreach ($recommendations as $recommendation) {
+                $item = $recommendation['item'];
+                $quantity = $recommendation['quantity'];
+
+                echo '<tr>';
+                echo '<td>' . $item . '</td>';
+                echo '<td>' . $quantity . '</td>';
+                echo '</tr>';
+            }
+            ?>
+        </tbody>
+    </table>
+  <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editDailyModal"> Add Today's Symptoms </button> <br>	<br>
+  <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editFoodModal">Add Today's Food Consumption</button><br>
 
 </div>
 
@@ -185,23 +240,16 @@ if (isset($_POST['updatesymptom'])) {
       $patientid = $_POST['patientid'];
       $foodids = isset($_POST['foodids']) ? $_POST['foodids'] : [];
 
-      // Validate and insert new food consumption records
       if (!empty($foodids)) {
-        // Prepare SQL statement with the current date in the format 'dd-mm-yyyy'
-        $currentDate = date('d-m-Y'); // Format the current date
+        $currentDate = date('d-m-Y'); 
         $sql = "INSERT INTO patientfood (patientid, foodid, date) VALUES (:patientid, :foodid, :date)";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':patientid', $patientid);
-        $stmt->bindValue(':date', $currentDate); // Bind the formatted date value
+        $stmt->bindValue(':date', $currentDate);
 
         foreach ($foodids as $foodid) {
-          // Check if foodid exists and is not empty
           if (!empty($foodid)) {
-            // Perform additional validation if needed
-            // For example, you might want to check if the foodid exists in the food table
-            // Additional validation code here...
 
-            // Bind foodid parameter and execute the statement
             $stmt->bindValue(':foodid', $foodid);
             $stmt->execute();
           }

@@ -16,7 +16,7 @@
     </div> 
   </div>    
 
-  <button type="button" class="btn btn-outline-secondary float-right" data-toggle="modal" data-target="#editCalendarModal"> Add </button> <br>	
+  <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editCalendarModal"> Add </button> <br>	
 </div>
 
 <!--popup: add visit form-->

@@ -44,7 +44,7 @@
         </tr>
     </table>
 
-    <button type="button" class="btn btn-outline-secondary float-right" data-toggle="modal" data-target="#editPatientModal">Edit </button> <br><br>
+    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editPatientModal">Edit </button> <br><br>
 </div>
 
 <!--popup: edit patient information-->

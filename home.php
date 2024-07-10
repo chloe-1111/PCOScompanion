@@ -46,7 +46,7 @@
 				<span class="navbar-text d-none d-lg-block"> Progress </span>
 			</a>
 			<a href="#profile-container" class="navbar-brand d-flex align-items-center ml-5">
-				<img src="images/progress.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="calendar icon">
+				<img src="images/profile.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="calendar icon">
 				<span class="navbar-text d-none d-lg-block"> Profile </span>
 			</a>
 			
