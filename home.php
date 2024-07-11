@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("templates/conn.php");
+?>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF 8" />
@@ -31,11 +36,9 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-white d-none d-md-block">
 		<div class="container d-flex justify-content-center">
 
-			<a href="#food-container" class="navbar-brand d-flex align-items-center">
-				<img src="images/food.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="list icon">
+		<a href="#calendar-container" class="navbar-brand d-flex align-items-center ml-5">
+				<img src="images/Food.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="medicine icon">
 				<span class="navbar-text d-none d-lg-block"> Food Suggestions </span>
-			</a>
-
 			</a>
 			<a href="#calendar-container" class="navbar-brand d-flex align-items-center ml-5">
 				<img src="images/calendar.png" width="40" height="40" class="mr-3 d-none d-md-block" alt="medicine icon">

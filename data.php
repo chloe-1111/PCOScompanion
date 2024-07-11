@@ -1,13 +1,12 @@
-<!--patient id in url -->
 <?php
 session_start();
 include("templates/conn.php");
 
 // Check if patient ID is present in the URL
-if(isset($_GET['patientid'])) {
+if (isset($_GET['patientid'])) {
     // Retrieve patient ID from the URL
     $patientID = $_GET['patientid'];
-    
+
     // Prepare and execute query to retrieve patient information based on patient ID
     $stmt = $conn->prepare("SELECT * FROM patient WHERE patientid = :patientid");
     $stmt->bindValue(':patientid', $patientID);
@@ -69,7 +68,3 @@ foreach ($cycles as $cycle) {
 // Convert the data array to JSON format
 $data_json = json_encode($data);
 ?>
-
-
-
-

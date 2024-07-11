@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(isset($_GET['patientid'])) {
     $patientid = $_GET['patientid'];
 } else {
@@ -28,7 +29,8 @@ if(isset($_GET['patientid'])) {
 
             $food_recommendations = [];
 
-            $csvFile = 'C:\xampp\htdocs\PCOScompanion\PCOS_AI\data.csv';
+            $csvFile = '/var/www/html/PCOS_AI/data.csv';  
+
             $file = fopen($csvFile, 'r');
 
             $headers = fgetcsv($file, 0, ';');

@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Include the Chart.js library
 echo '<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>';
 
