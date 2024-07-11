@@ -1,12 +1,12 @@
 {
-  "name": "PCOS Companion",
-  "dockerFile": "Dockerfile",
-  "forwardPorts": [80],
-  "extensions": [
-    "ms-azuretools.vscode-docker"
-  ],
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
-  },
-  "postCreateCommand": "docker build -t pcoscompanionimage . && docker run -d -p 80:80 -v $(pwd)/templates/databasepcos.db:/var/www/html/templates/databasepcos.db pcoscompanionimage"
+    "name": "PCOS Companion",
+    "dockerFile": "Dockerfile",
+    "forwardPorts": [80],
+    "extensions": [
+      "ms-azuretools.vscode-docker"
+    ],
+    "settings": {
+      "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "postCreateCommand": "docker build -t pcoscompanionimage . && docker run -d -p 80:80 -v /workspaces/PCOScompanion/templates/databasepcos.db:/var/www/html/templates/databasepcos.db pcoscompanionimage"
 }
