@@ -41,4 +41,6 @@ You can log in using the following credentials to test the app:
 
 The application has also been deployed using Microsoft Azure. You can access the deployed version of the app here:
 
+(While the deployment was successful and users could log in and view data, editing data resulted in an error: SQLSTATE[HY000]: General error: 8 attempt to write a readonly database. This indicated a permissions issue with the SQLite database)
+
 [PCOS Companion on Azure](https://pcoscompanionapp.azurewebsites.net/)
